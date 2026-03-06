@@ -7,12 +7,11 @@ import numpy as np
 import pickle
 from PIL import Image
 
-from model import VAE
+from model.vae import VAE
 
 
-# --------------------------------------------------
+
 # Dataset
-# --------------------------------------------------
 
 class CarRacingDataset(Dataset):
 
@@ -46,9 +45,7 @@ class CarRacingDataset(Dataset):
         return img
 
 
-# --------------------------------------------------
 # Loss
-# --------------------------------------------------
 
 def vae_loss(recon_x, x, mu, logvar):
 
@@ -59,9 +56,7 @@ def vae_loss(recon_x, x, mu, logvar):
     return recon_loss + kl
 
 
-# --------------------------------------------------
 # Training
-# --------------------------------------------------
 
 def train():
 
