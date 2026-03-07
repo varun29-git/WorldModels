@@ -108,7 +108,8 @@ if __name__ == "__main__":
                 actions.extend([actions[-1]] * pad_len)
                 
             obs_tensor = torch.stack([self.transform(o) for o in obs])
-            action_tensor = torch.tensor(actions, dtype=torch.float32)
+            import numpy as np
+            action_tensor = torch.tensor(np.array(actions), dtype=torch.float32)
             return obs_tensor, action_tensor
 
     print("Loading dataset...")
@@ -123,14 +124,16 @@ if __name__ == "__main__":
 
     model = MDN_RNN(z_dim, action_dim, hidden_dim, num_gaussians).to(device)
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', factor=0.5, patience=5, verbose=True)
 
-    num_epochs = 50
+    num_epochs = 100
 
     for epoch in range(num_epochs):
 
         loss = train(model, vae, dataloader, optimizer, device)
 
         print(f"Epoch {epoch} | Loss: {loss:.4f}")
+        scheduler.step(loss)
 
     torch.save(model.state_dict(), "rnn.pt")

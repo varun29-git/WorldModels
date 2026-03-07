@@ -70,7 +70,7 @@ def train():
 
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
-    epochs = 20
+    epochs = 50
 
     for epoch in range(epochs):
 
