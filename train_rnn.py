@@ -76,3 +76,5 @@ if __name__ == "__main__":
         loss = train(model, dataloader, optimizer, device)
 
         print(f"Epoch {epoch} | Loss: {loss:.4f}")
+
+    torch.save(model.state_dict(), "rnn.pt")

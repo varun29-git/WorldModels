@@ -24,7 +24,7 @@ class MDN_RNN(nn.Module):
 
     def forward(self, z, a, hidden=None):
 
-        x = torch.concat([z, a], dim=1) # (batch, seq_len, z_dim + action_dim)
+        x = torch.concat([z, a], dim=-1) # (batch, seq_len, z_dim + action_dim)
 
         h_seq, hidden = self.rnn(x, hidden) # (batch, seq_len, hidden_dim)
 

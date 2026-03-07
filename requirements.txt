@@ -4,3 +4,4 @@ gymnasium
 numpy
 matplotlib
 pickle
+cma
