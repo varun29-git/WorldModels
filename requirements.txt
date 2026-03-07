@@ -1,6 +1,7 @@
 torch
 torchvision
-gymnasium
+swig
+gymnasium[box2d]
 numpy
 matplotlib
 cma
