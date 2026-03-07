@@ -36,7 +36,17 @@ def main():
         print(f"Could not load controller.pt: {e}. Using untrained Controller.")
     controller.eval()
     
-    env = gym.make("CarRacing-v3", render_mode="human")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--record', action='store_true', help='Record a video instead of rendering to screen')
+    args = parser.parse_args()
+
+    render_mode = "rgb_array" if args.record else "human"
+    env = gym.make("CarRacing-v3", render_mode=render_mode)
+    
+    if args.record:
+        from gymnasium.wrappers import RecordVideo
+        env = RecordVideo(env, video_folder="video_output", episode_trigger=lambda x: True)
     
     transform = transforms.Compose([
         transforms.ToPILImage(),
@@ -44,8 +54,8 @@ def main():
         transforms.ToTensor()
     ])
     
-    print("Running episode to test generation (Rendering)...")
-    reward = rollout(controller, vae, rnn, env, transform, render=True)
+    print("Running episode to test generation...")
+    reward = rollout(controller, vae, rnn, env, transform, render=not args.record)
     
     print(f"Total Reward for this run: {reward}")
     env.close()
