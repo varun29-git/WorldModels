@@ -1,5 +1,8 @@
 
 # World Models
+
+**Note: This project is currently Under Development.**
+
 World Models is an experimental implementation of the concepts from the "World Models" paper by David Ha and Jürgen Schmidhuber. This repository details an approach using a Variational Autoencoder (VAE) and a Recurrent Neural Network (RNN) for latent space environment simulation. The project encompasses the components needed to effectively understand and navigate an environment.
 
 Reference Paper: [World Models (Ha and Schmidhuber, 2018)](https://arxiv.org/abs/1803.10122)
@@ -22,9 +25,9 @@ flowchart TD
     Action["Action (a_t)"]
     
     subgraph "Agent Architecture"
-        V["Vision Model (V)\nVariational Autoencoder"]
-        M["Memory Model (M)\nMDN-RNN"]
-        C["Controller (C)\nLinear Model"]
+        V["Vision Model (V)<br>Variational Autoencoder"]
+        M["Memory Model (M)<br>MDN-RNN"]
+        C["Controller (C)<br>Linear Model"]
     end
 
     Env -->|Yields| Obs
