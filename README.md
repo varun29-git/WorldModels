@@ -8,7 +8,7 @@ World Models is an experimental implementation of the concepts from the "World M
 Reference Paper: [World Models (Ha and Schmidhuber, 2018)](https://arxiv.org/abs/1803.10122)
 
 ## Model Architecture
-`model/vae.py` and `model/controller.py`
+`model/vae.py`, `model/mdn_rnn.py` and `model/controller.py`
 
 The agent is composed of three components working together to effectively understand and navigate an environment. The implementation adheres to the World Models design, incorporating:
 
