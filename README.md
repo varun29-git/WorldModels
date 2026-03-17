@@ -57,4 +57,3 @@ The `generate.py` script is used to interact with the environment and collect ro
 
 ## Design Philosophy
 World Models is aimed at improving understanding of latent space environment simulation. The project prioritizes clear, readable implementations of core components such as the VAE, MDN-RNN, and Controller, making these ideas easier to study and modify without the overhead of massive, complex codebases.
->>>>>>> 9f59432 (updated readme)
